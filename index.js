@@ -1,30 +1,69 @@
-// Your code here
 class Polygon {
-    constructor(num){
-        this.num = num
-    }
-    get countSides (){
-    return this.num.length
-    }
-    get perimeter (){
-        return this.num.reduce(function(result,value){
-            return result = result + value
-        }, 0 );
+  constructor(array){
+    this.array = array 
 
-    }
+  }
+
+  get countSides(){
+    return this.array.length
+  }
+
+  get perimeter(){
+    let sum = 0;
+    this.array.forEach(item =>{
+      sum+=item;
+    })
+    return sum
+  }
 }
+
+
 class Triangle extends Polygon{
- get isValid (){
- return   (this.num[0] + this.num[1]) >this.num[2] && (this.num[1] + this.num[2]) >this.num[0] && (this.num[0] + this.num[2]) >this.num[1] ;
- }
+
+  constructor(array){
+    super(array)
+  }
+
+            get isValid() {
+                if (this.array[0] + this.array[1] > this.array[2] && this.array[0] + this.array[2] > this.array[1] && this.array[2] + this.array[1] > this.array[0]) {
+                    console.log(true);
+                    return true
+                } else {
+                    console.log(false);
+                    return false
+
+                }
+            }
+
 }
+
+
+
 class Square extends Polygon{
-    get isValid(){
-        return this.num[0]==this.num[1] && this.num[2]==this.num[0]&& this.num[3]==this.num[0];
-    }
-    get area(){
-        if(this.isValid){
-            return this.num[0] * this.num[0] 
+  constructor(array){
+    super(array)
+  }
+
+  get area(){
+    let ar = 0
+
+    ar = this.array[0] * this.array[0]
+
+    return ar
+  }
+
+  get isValid(){
+
+let check =true;
+        for (let index = 0; index < this.array.length; index++) {
+            const element = this.array[index];
+
+            if (this.array[0] !== element) {
+                //console.log(false);
+                check =false;
+            }
+
         }
-    }
-} 
+        return check;
+}
+}
