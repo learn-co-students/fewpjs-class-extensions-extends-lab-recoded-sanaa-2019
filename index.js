@@ -8,7 +8,7 @@ class Polygon {
     }
     get perimeter (){
         return this.num.reduce(function(result,value){
-            return res = result + value
+            return result = result + value
         }, 0 );
 
     }
